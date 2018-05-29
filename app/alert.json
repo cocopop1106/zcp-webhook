@@ -1,0 +1,110 @@
+{
+  "status": "success",
+  "data": [
+    {
+      "labels": {
+        "alertname": "PodFrequentlyRestarting",
+        "component": "kube-state-metrics",
+        "container": "cloud-movie-frontend",
+        "env": "SK-CPS-ICCS-K8S-DEV",
+        "instance": "172.30.121.160:8080",
+        "job": "kubernetes-monitoring-endpoints",
+        "kubernetes_name": "kube-state-metrics",
+        "kubernetes_namespace": "monitoring",
+        "namespace": "zcp-demo",
+        "pod": "cloud-movie-frontend-stable-66d966bbd9-46nmj",
+        "severity": "warning"
+      },
+      "annotations": {
+        "description": "Pod /cloud-movie-frontend-stable-66d966bbd9-46nmj is was restarted 12.05020920502092 times within the last hour",
+        "summary": "Pod is restarting frequently"
+      },
+      "startsAt": "2018-05-28T01:44:45.793136101Z",
+      "endsAt": "2018-05-29T06:48:30.805910851Z",
+      "generatorURL": "http://prometheus.zcp-dev.jp-tok.containers.mybluemix.net/graph?g0.expr=increase%28kube_pod_container_status_restarts_total%5B1h%5D%29+%3E+5&g0.tab=1",
+      "status": {
+        "state": "active",
+        "silencedBy": [
+          
+        ],
+        "inhibitedBy": [
+          
+        ]
+      },
+      "receivers": [
+        "test-alert"
+      ],
+      "fingerprint": "4a07720762868342"
+    },
+    {
+      "labels": {
+        "alertname": "PodFrequentlyRestarting",
+        "component": "kube-state-metrics",
+        "container": "cloud-movie-frontend",
+        "env": "SK-CPS-ICCS-K8S-DEV",
+        "instance": "172.30.121.160:8080",
+        "job": "kubernetes-monitoring-endpoints",
+        "kubernetes_name": "kube-state-metrics",
+        "kubernetes_namespace": "monitoring",
+        "namespace": "zcp-demo",
+        "pod": "cloud-movie-frontend-new-b9bcdbbbd-wx57d",
+        "severity": "warning"
+      },
+      "annotations": {
+        "description": "Pod /cloud-movie-frontend-new-b9bcdbbbd-wx57d is was restarted 11.04602510460251 times within the last hour",
+        "summary": "Pod is restarting frequently"
+      },
+      "startsAt": "2018-05-28T01:44:45.793136101Z",
+      "endsAt": "2018-05-29T06:48:30.805910851Z",
+      "generatorURL": "http://prometheus.zcp-dev.jp-tok.containers.mybluemix.net/graph?g0.expr=increase%28kube_pod_container_status_restarts_total%5B1h%5D%29+%3E+5&g0.tab=1",
+      "status": {
+        "state": "active",
+        "silencedBy": [
+          
+        ],
+        "inhibitedBy": [
+          
+        ]
+      },
+      "receivers": [
+        "test-alert"
+      ],
+      "fingerprint": "76b6c4001a49fe1d"
+    },
+    {
+      "labels": {
+        "alertname": "PodFrequentlyRestarting",
+        "component": "kube-state-metrics",
+        "container": "cloud-movie-frontend",
+        "env": "SK-CPS-ICCS-K8S-DEV",
+        "instance": "172.30.121.160:8080",
+        "job": "kubernetes-monitoring-endpoints",
+        "kubernetes_name": "kube-state-metrics",
+        "kubernetes_namespace": "monitoring",
+        "namespace": "zcp-demo",
+        "pod": "cloud-movie-frontend-stable-66d966bbd9-4lksq",
+        "severity": "warning"
+      },
+      "annotations": {
+        "description": "Pod /cloud-movie-frontend-stable-66d966bbd9-4lksq is was restarted 12.05020920502092 times within the last hour",
+        "summary": "Pod is restarting frequently"
+      },
+      "startsAt": "2018-05-28T01:44:45.793136101Z",
+      "endsAt": "2018-05-29T06:48:30.805910851Z",
+      "generatorURL": "http://prometheus.zcp-dev.jp-tok.containers.mybluemix.net/graph?g0.expr=increase%28kube_pod_container_status_restarts_total%5B1h%5D%29+%3E+5&g0.tab=1",
+      "status": {
+        "state": "active",
+        "silencedBy": [
+          
+        ],
+        "inhibitedBy": [
+          
+        ]
+      },
+      "receivers": [
+        "test-alert"
+      ],
+      "fingerprint": "8952bbd135d5efac"
+    }
+  ]
+}
