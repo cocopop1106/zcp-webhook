@@ -1,52 +1,48 @@
 from flask import Flask, request, abort
 import json
 import sqlite3
+import datetime
 
 app = Flask(__name__)
 
 with open('alert.json', mode='r', encoding='utf-8') as f:
     alertData = json.load(f)
 
-@app.route('/webhook', methods=['GET'])
+@app.route('/', methods=['GET'])
 def webhook():
     if request.method == 'GET':
 
         json_str = json.dumps(alertData)
         print(json_str)
 
+        now = datetime.datetime.now()
+        print(now)
+        now_datetime = now.strftime('%Y-%m-%d %H:%M:%S')
+        print(now_datetime)
+
         try:
             print(sqlite3.version)
-            conn = sqlite3.connect('database.db')
-            print(type(conn))
-            print(dir(conn))
+            con = sqlite3.connect('/Users/cocopop1106/PycharmProjects/zcp-webhook/app/static/database.db')
 
-            with conn:
-                cur = conn.cursor()
-                print(type(cur))
-                for i in dir(cur):
-                    if not i.startswith("__"):
-                        print(i)
+            with con:
+                cs = con.cursor()
 
-                # cur.execute('create table if not exists test(name varchar(30), age integer, addr text)')
-                # sql = "insert into test(name,age,addr) values(?,?,?)"
-                # cur.execute(sql, ('오서우', 21, '서울특별시'))
+                sql = "create table if not exists alert (json json, date varchar(30)) "
+                cs.execute(sql)
 
-                cur.execute('create table if not exists alert('
-                            'json text, '
-                            'datetime text'
-                            ')')
-                # cur.execute('select * from alert')
-                # print(cur.fetchone())
-                sql = "insert into alert(json, datetime) values(?, datetime('now'))"
-                cur.execute(sql, ('hello world'))
-                cur.fetchone()
+                sql2 = "insert into alert(json, date) values(?, ?) "
+                cs.execute(sql2, (json_str, now_datetime))
 
-                cur.close()
+                cs.execute('select * from alert')
+                print(cs.fetchall())
 
-            conn.commit()
-            conn.close()
+                con.commit()
+                cs.close()
+
+            con.close()
+
         except Exception as err:
-            print(err)
+            print('ERROR:', err)
 
         return json_str
     else:
