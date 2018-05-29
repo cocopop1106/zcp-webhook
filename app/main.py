@@ -4,7 +4,7 @@ import sqlite3
 
 app = Flask(__name__)
 
-with open('C:/Users/Administrator/alert.json', mode='r', encoding='utf-8') as f:
+with open('alert.json', mode='r', encoding='utf-8') as f:
     alertData = json.load(f)
 
 @app.route('/webhook', methods=['GET'])
@@ -27,11 +27,11 @@ def webhook():
                     if not i.startswith("__"):
                         print(i)
 
-                # cur.execute('create table if not exists alert(content text)')
+                cur.execute('create table if not exists alert(content text)')
                 # cur.execute('select * from alert')
                 # print(cur.fetchone())
-                sql = "insert into alert(content) values(?)"
-                cur.execute(sql, '오서우')
+                # sql = "insert into alert(content) values(?)"
+                # cur.execute(sql, '오서우')
                 # cur.execute('select * from alert')
 
                 cur.close()
