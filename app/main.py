@@ -27,12 +27,19 @@ def webhook():
                     if not i.startswith("__"):
                         print(i)
 
-                cur.execute('create table if not exists alert(content text)')
+                # cur.execute('create table if not exists test(name varchar(30), age integer, addr text)')
+                # sql = "insert into test(name,age,addr) values(?,?,?)"
+                # cur.execute(sql, ('오서우', 21, '서울특별시'))
+
+                cur.execute('create table if not exists alert('
+                            'json text, '
+                            'datetime text'
+                            ')')
                 # cur.execute('select * from alert')
                 # print(cur.fetchone())
-                # sql = "insert into alert(content) values(?)"
-                # cur.execute(sql, '오서우')
-                # cur.execute('select * from alert')
+                sql = "insert into alert(json, datetime) values(?, datetime('now'))"
+                cur.execute(sql, ('hello world'))
+                cur.fetchone()
 
                 cur.close()
 
