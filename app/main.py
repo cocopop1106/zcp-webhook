@@ -22,7 +22,8 @@ def webhook():
 
         try:
             print(sqlite3.version)
-            con = sqlite3.connect('/Users/cocopop1106/PycharmProjects/zcp-webhook/app/static/database.db')
+            # con = sqlite3.connect('/Users/cocopop1106/PycharmProjects/zcp-webhook/app/static/database.db')
+            con = sqlite3.connect('C:/Users/Administrator/PycharmProjects/zcp-webhook/app/static/database.db')
 
             with con:
                 cs = con.cursor()
