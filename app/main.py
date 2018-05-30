@@ -8,7 +8,7 @@ app = Flask(__name__)
 with open('alert.json', mode='r', encoding='utf-8') as f:
     alertData = json.load(f)
 
-@app.route('/', methods=['GET'])
+@app.route('/webhook', methods=['GET'])
 def webhook():
     if request.method == 'GET':
 
