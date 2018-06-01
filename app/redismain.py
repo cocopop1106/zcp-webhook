@@ -20,20 +20,22 @@ def webhook():
         now = datetime.datetime.now()
         nowDatetime = now.strftime('%Y-%m-%d(%H:%M:%S)')
         req_data = request.get_json()
+
+        print(json.dumps(req_data))
+
         alertname = req_data['commonLabels']['alertname']
         receiver = req_data['receiver']
         key_name = nowDatetime + "_" + alertname + "_" + receiver
-        print
-        key_name
+        print(key_name)
         conn.hmset(key_name, {key: req_data[key] for key in req_data})
 
-    if not conn.exists(key_name):
-        print
-        "Error: thing doesn't exist"
+    # if not conn.exists(key_name):
+    #     print
+    #     "Error: thing doesn't exist"
 
     else:
         abort(400)
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', debug=True)
+    app.run(host='127.0.0.1', debug=True)
