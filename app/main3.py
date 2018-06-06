@@ -1,6 +1,5 @@
 from flask import Flask, request, abort, redirect, url_for, jsonify, render_template
 import json
-import redis
 import datetime, time
 import ast
 from rejson import Client, Path
