@@ -17,7 +17,7 @@ app = Flask(__name__)
 def webhook_save():
     if request.method == 'POST':
         req_data = request.get_json()
-        print(req_data)
+        # print(req_data)
         json_str = json.dumps(req_data)
         print(json_str)
 
@@ -38,11 +38,11 @@ def webhook_save():
 
                 conn.commit()
 
-            with conn.cursor() as cursor:
-                sql = 'SELECT * FROM history'
-                cursor.execute(sql)
-                result = cursor.fetchall()
-                # print(result)
+            # with conn.cursor() as cursor:
+            #     sql = 'SELECT * FROM history'
+            #     cursor.execute(sql)
+            #     result = cursor.fetchall()
+            #     print(result)
         finally:
             conn.close()
 
