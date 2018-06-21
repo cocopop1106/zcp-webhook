@@ -3,23 +3,23 @@ import json
 import datetime, time
 import pymysql.cursors
 
-MARIA_SERVER = '169.56.100.62'
-MARIA_PORT = 30000
+# MARIA_SERVER = '169.56.100.62'
+# MARIA_PORT = 30000
+MARIA_SERVER = 'webhook-mariadb'
+MARIA_PORT = 3306
 MARIA_DB = 'alertmanager'
 MARIA_USER = 'root'
 MARIA_PWD = 'admin'
 
 app = Flask(__name__)
 
-with open('alert.json', mode='r', encoding='utf-8') as f:
-    alertData = json.load(f)
-
-@app.route('/', methods=['GET'])
-def get_history():
-    if request.method == 'GET':
-
-        json_str = json.dumps(alertData)
-        # print(json_str)
+@app.route('/webhook', methods=['POST'])
+def webhook_save():
+    if request.method == 'POST':
+        req_data = request.get_json()
+        print(req_data)
+        json_str = json.dumps(req_data)
+        print(json_str)
 
         now = datetime.datetime.now()
         now_datetime = now.strftime('%Y-%m-%d %H:%M:%S')
@@ -42,16 +42,14 @@ def get_history():
                 sql = 'SELECT * FROM history'
                 cursor.execute(sql)
                 result = cursor.fetchall()
-                print(result)
+                # print(result)
         finally:
             conn.close()
-
-        return json_str
 
     else:
         abort(400)
 
+    return jsonify({'status': 'success'}), 200
 
 if __name__ == '__main__':
-    app.run(debug=True, host='127.0.0.1')
-
+    app.run(host='0.0.0.0', debug=True)
